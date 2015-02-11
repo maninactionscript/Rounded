@@ -1,0 +1,28 @@
+<?php $__env->startSection('content'); ?> 
+<div id="cl-wrapper" style="opacity: 1; margin-left: 0px;">
+    <?php echo $__env->make('layouts.sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <div id="pcont" class="container-fluid">
+        <div class="row">        
+            <div class="tab-container">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+                    <li><a data-toggle="tab" href="#profile">Profile</a></li>
+                    <li><a data-toggle="tab" href="#messages">Messages</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="home" class="tab-pane active cont">
+                        <h3 class="hthin">Basic Tabs</h3>
+                        <p>This is an example of tabs navigation, you can change the tabs position and use them with icons if you like.</p>
+                    </div>
+                    <div id="profile" class="tab-pane cont">
+                        <h2>Typography</h2>
+                        <p>This is just an example of content writen by <b>Jeff Hanneman</b>, as you can see it is a clean design with large
+                        </p></div>
+                    <div id="messages" class="tab-pane">..sdfsdfsfsdf.</div>
+                </div>
+            </div>
+        </div>                                       
+    </div>    
+</div> 
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

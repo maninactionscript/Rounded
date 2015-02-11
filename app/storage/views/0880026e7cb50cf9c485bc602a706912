@@ -1,0 +1,100 @@
+<div class="modal-header">
+    <h4><?php echo ($expense->id == '' || $expense->id == '0') ? 'Add income' : 'Edit income'; ?></h4>
+</div>
+<div class="modal-body">
+    <form id="add_expense" data-type="income">
+        <div class="row">
+            <div class="large-6 columns">
+                <label>Amount</label>
+                <div class="input-group">
+                    <span class="input-group-addon">$</span>
+                    <input type="text" value="<?php echo $expense->amount; ?>" id="amount">
+                </div>
+            </div>
+            <div class="large-6 columns">
+                <label>
+                    <span class="jcheckbox">
+                        <input <?php echo $expense->inc_gst=='1'?'checked':''; ?> type="checkbox" id="inc_gst">
+                        <label class="fa fa-check" for="inc_gst"></label>
+                    </span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INCLUDE GST
+                </label>
+                <div class="input-group">
+                    <span class="input-group-addon">$</span>
+                    <input type="text" disabled="disabled" value="<?php echo $expense->gst==''?'0.00':round($expense->gst,2); ?>" id="gst">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns">
+                <label>Date received</label>
+                <div class="input-group-end">
+                    <span class="input-group-addon fa fa-calendar-o"></span>
+                    <input type="text" id="updated_at_view" value="<?php echo $expense->updated_at?date('j M, y',strtotime($expense->updated_at)):date('j M, y'); ?>">
+                    <input type="hidden" id="updated_at" value="<?php echo $expense->updated_at?strtotime($expense->updated_at):strtotime('now'); ?>">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns">
+                <label>Description</label>
+                <textarea id="description" style="width: 100%;"><?php echo $expense->description; ?></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-6 columns">
+                <label>Category</label>
+                <select id="category_id">
+                    <?php if($categories->count() > 0): ?>
+                    <?php foreach($categories as $category): ?>
+                    <option <?php echo $expense->category_id == $category->id?'selected':''; ?> value="<?php echo $category->id; ?>"><?php echo $category->title; ?></option>
+                    <?php endforeach; ?>
+                    <?php endif; ?>
+                    <option value="create_category">Create category...</option>
+                </select>
+            </div>
+            <div class="large-6 columns">
+                <label>payment on invoice</label>
+                <select id="invoice_id">
+                    <option value="1">Invoice</option>
+                    <option value="2">Invoice</option>
+                    <option value="3">Invoice</option>
+                    <option value="4">Invoice</option>
+                    <option value="5">Invoice</option>
+                    <option value="6">Invoice</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns" style="display: none;" id="add_category_form">
+                <input type="text" placeholder="Category name" id="category_title" value="" class="form-control" />
+                <button class="button btn-default" type="button">Cancel</button>
+                <button type="button" class="button btn-primary" style="margin-right: 4px ! important;">Save</button>
+            </div>
+        </div>
+        <input type="hidden" id="id" value="<?php echo $expense->id==''?0:$expense->id; ?>">
+    </form>
+</div>
+<div class="modal-footer">
+    <div class="row"> 
+        <div class="medium-5 columns "><button class="button btn-default expand right-slider-close" type="button">Cancel</button></div> 
+        <div class="medium-5 columns"><button class="button success expand btn-primary" type="button" data-type="income" id="add-income">Save</button></div>
+    </div>
+</div>
+<script type="text/javascript">
+    $('input#inc_gst[type="checkbox"]').on('change',function(){
+        if($(this).is(':checked')){
+            var amount = parseFloat($('#amount').val());
+            if(isNaN(amount)) amount=0;
+            var gst = amount/11;
+            $('#gst').val(gst.toFixed(2));
+        }
+        else {
+            $('#gst').val('0.00'); 
+        }
+    }); 
+    $('#updated_at_view').datepicker({format : 'd M, yy', autoclose: true})
+    .on('changeDate', function(ev){
+        $('#updated_at').val(ev.format('yyyy-mm-dd'));
+    });
+</script>

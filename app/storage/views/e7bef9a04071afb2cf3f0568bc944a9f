@@ -1,0 +1,15 @@
+<?php $__env->startSection('title'); ?> 
+@parent  - My Transactions
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?> 
+<div id="cl-wrapper" style="opacity: 1; margin-left: 0px;">
+    <?php echo $__env->make('layouts.sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <div id="pcont" class="container-fluid">
+        <?php echo $__env->make('layouts.headnav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <div class="container-fluid" id="jmenu-page-content">
+               
+        </div>
+    </div>
+</div> 
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

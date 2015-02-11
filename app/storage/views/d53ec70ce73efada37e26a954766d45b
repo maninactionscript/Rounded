@@ -1,0 +1,56 @@
+<div class="modal-header">
+    <h4>Merge Transactions</h4>
+</div>
+<div class="modal-body">
+    <form role="form" id="add_expense" data-type="income">
+        <div class="col-sm-12">
+            <div class="col-sm-5">
+                <label>Amount</label>
+                <div class="input-group">
+                    <p>$ <?php echo $expense[0]->amount; ?></p>
+                </div>
+            </div>
+            <div class="col-sm-7">
+                <label>Inc. GST</label>
+                <div class="input-group col-sm-9">
+                    <p>$ <?php echo round($expense[0]->amount/11,2); ?></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <label style="color: red;">Select correct date</label>
+            <div class="input-group">
+                <a class="merge_select" data-id="<?php echo $expense[0]->id; ?>" href="#"><?php echo $expense[0]->updated_at?date('j M, y',strtotime($expense[0]->updated_at)):date('Y-m-d'); ?></a>
+                <span> OR </span>
+                <a class="merge_select" data-id="<?php echo $expense[1]->id; ?>" href="#"><?php echo $expense[1]->updated_at?date('j M, y',strtotime($expense[1]->updated_at)):date('Y-m-d'); ?></a>
+               <input type="hidden" value="" id="merged_id">
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <label>Attachment</label>
+            <div>
+                <?php if($expense[0]->attachment && $expense[1]->attachment): ?>
+                <p><?php echo basename($expense[0]->attachment); ?>, <?php echo basename($expense[1]->attachment); ?></p>
+                <?php elseif( !$expense[0]->attachment && !$expense[1]->attachment ): ?>
+                <p>No attachment</p>
+                <?php elseif($expense[0]->attachment): ?>
+                <p><?php echo basename($expense[0]->attachment); ?></p>
+                <?php else: ?>
+                <p><?php echo basename($expense[1]->attachment); ?></p>
+                <?php endif; ?>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <label>Description</label>
+            <div>
+                <textarea id="description" style="width: 100%;"></textarea>
+            </div>
+        </div>
+        <div style="clear: both;"></div>
+        <input type="hidden" id="id" value="<?php echo $expense[0]->id; ?>,<?php echo $expense[1]->id; ?>">
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" id="merge_transaction">Save</button>
+    <button data-dismiss="modal" class="btn btn-default btn-flat md-close-custom" type="button">Cancel</button>
+</div>

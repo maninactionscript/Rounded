@@ -1,0 +1,21 @@
+<div class="cl-sidebar">
+    <div class="cl-toggle"><i class="fa fa-bars"></i></div>
+    <div class="cl-navblock">
+        <div class="menu-space">
+            <div class="content">
+                <div class="sidebar-logo">
+                    <div class="logo">
+                        <a href="<?php echo URL::to('/'); ?>"></a>
+                    </div>
+                </div>
+                <ul class="cl-vnavigation" style="display: block;">
+                    <li class="parent"><a href="<?php echo URL::to('/activity'); ?>"><i class="fa fa-circle"></i><span>Activity</span></a></li>
+                </ul>
+            </div>                                                                                
+        </div>
+        <div style="padding:7px 9px;" class="text-right collapse-button">
+            <a href="<?php echo URL::to('user/logout'); ?>" class="btn col-sm-5 logout"><i class="fa fa-sign-out"></i><span>Logout</span></a>
+            <button style="" class="btn btn-default" id="sidebar-collapse"><i class="fa fa-angle-left" style="color:#fff;"></i></button>
+        </div>
+    </div>
+</div>

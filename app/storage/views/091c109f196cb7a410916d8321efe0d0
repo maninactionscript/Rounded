@@ -1,0 +1,16 @@
+<?php if($addNew): ?>
+<tr data-id="<?php echo $expense->id; ?>">
+    <?php endif; ?>
+    <td><input value="<?php echo $expense->id; ?>" type="checkbox" class="check"></td>
+    <td><?php echo date('j M, y', strtotime($expense->updated_at)); ?></td>
+    <td><?php echo $expense->type=='income'?ucfirst($expense->type):'Expense'; ?></td>
+    <td><?php echo $expense->description; ?></td>
+    <td>
+        <?php echo $expense->category?$expense->category->title:'N/A'; ?>
+    </td>
+    <td><a href="#"><?php echo basename($expense->attachment); ?></a></td>
+    <td>$<?php echo number_format($expense->amount,2); ?></td>
+    <td>$<?php echo number_format($expense->gst,2); ?></td>
+    <?php if($addNew): ?>
+</tr>
+<?php endif; ?>

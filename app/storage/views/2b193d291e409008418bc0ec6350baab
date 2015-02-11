@@ -1,0 +1,49 @@
+<?php echo $__env->make('layouts.right-sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('layouts.headnav-small', array('title' => 'Categories', 'user' => $user), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<div class="container-fluid">
+    <div class="large-12 columns">
+        <h3>Expense Categories</h3>
+        <div class="large-4 column no-padding"> <input type="text" id="addNewCategoryText" ></div>
+        <div class="large-4 columns"> <input type="button" class="button" value="Add" id="addNewCategoryBtn"></div>
+        <div class="large-4 columns"></div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="large-12 columns">
+        <!-- content -->
+        <table id="categoryTable" data-type="" class="no-strip">
+            <thead class="no-border">
+            <tr>
+                <th style="text-align: left"><span>Title</span></th>
+            </tr>
+            </thead>
+            <tbody class="no-border-y">
+            <?php if(count($categories)): ?>
+                <?php foreach($categories as $cat): ?>
+                    <tr data-id="<?php echo $cat->id; ?>" class="category-item" >
+                        <td style="" id="cat-<?php echo $cat->id; ?>">
+                            <div class="cat-content">
+                                <span class="form_title"><?php echo $cat->title; ?></span>
+                                <div class="form_action action-hide">
+                                    <input data-id="<?php echo $cat->id; ?>" id="value-<?php echo $cat->id; ?>" type="text" value="<?php echo $cat->title; ?>" class="form_action_value">
+                                    <input data-id="<?php echo $cat->id; ?>" type="button" value="Save"  class="form_action_submit button right-slider">
+                                </div>
+                            </div>
+
+                            <div class="cat-action">
+                                <a  data-id="<?php echo $cat->id; ?>" data-action="edit" class="cat-action-button edit">Edit</a>
+                                <a  data-id="<?php echo $cat->id; ?>" data-action="delete" class="cat-action-button delete">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <tr data-id="0">
+                    <td colspan="8">No data found</td>
+                </tr>
+            <?php endif; ?>
+            </tbody>
+        </table>
+            <!--end content -->
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="row basr-actions">
+    <div class="col-sm-1 col-md-2">                                
+        <a href="#" data-target="#modal" data-toggle="modal" data-form="purchases"  class="form-modal"><i class="fa fa-plus"></i><span>Add purchase</span></a>
+    </div>
+    <div class="col-sm-1 col-md-2">                                
+        <a href="#" data-target="#modal" data-toggle="modal" data-form="import" class="form-modal"><i class="fa fa-download"></i><span>Import from bank</span></a>
+    </div>
+     <div class="col-sm-12">
+        <table class="no-border table-list" data-type="income">
+            <thead class="no-border">
+                <tr>
+                    <th style="width: 20%;">Date</th>
+                    <th style="width: 30%;">Description</th>
+                    <th>>Category</th>
+                    <th>Amount</th>
+                    <th>Inc. Gst</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody class="no-border-x no-border-y">
+                <tr data-id="0">
+                    <td colspan="6">No data found</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div role="dialog" tabindex="-1" id="modal" class="modal fade custom-modal" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div

@@ -1,0 +1,11 @@
+<?php echo $__env->make('layouts.right-sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('layouts.headnav-small', array('title' => 'client', 'user' => $user, 'client' => true), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<div class="container-fluid">
+    <div id="clients" class="large-12 columns">
+        <?php echo $__env->make('include.client', array('clients' => $clients), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    </div>
+</div>
+<script type="text/javascript">
+    $('.right-slider').rightSlider();
+    document.title = 'Rounded - Client';
+</script>

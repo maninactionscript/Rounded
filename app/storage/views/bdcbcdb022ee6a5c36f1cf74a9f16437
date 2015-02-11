@@ -1,0 +1,110 @@
+<div class="container-fluid <?php echo $banks->count()==0?'add-bank':'list-bank'; ?>">
+    <?php if($banks->count()==0): ?>
+    <div style="padding-top: 85px;">
+        <p>You haven't added any bank accounts yet.</p>
+        <a data-form="addbank" data-modal="addbank_modal" href="#" class="btn btn-trans form-modal">
+            <span>Add bank account</span>
+        </a>
+    </div>
+    <?php else: ?>
+    <div class="container-fluid list">
+        <?php foreach($banks as $bank): ?>
+            <?php echo $__env->make('include.response.bank', array('bank' => $bank), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <?php endforeach; ?>
+        <div class="add-bank-btn">
+            <div>
+                <a data-form="addbank" data-modal="addbank_modal" href="#" class="form-modal">
+                    <i class="fa fa-plus"></i><br>
+                    <span>Add account</span>
+                </a>
+            </div>
+        </div> 
+        <div style="clear: both;"></div>
+    </div>
+    <div class="container-fluid container-action">
+        <div class="btn-group" style="width: 25%;">
+            <button class="btn btn-primary" type="button">
+                Add to workbook
+            </button>
+            <div class="btn-group">
+                <button data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">
+                    &nbsp;More&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<span class="caret"></span>
+                </button>
+                <ul role="menu" class="dropdown-menu">
+                    <li class="divider"></li>
+                    <li><a id="edelete" style="color: #c8c8c8;" href="#">Delete</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="btn-group">
+            <div class="btn-group custome-filter">
+                <button data-toggle="jdropdown" class="btn btn-default dropdown-toggle" data-type="" type="button">
+                    &nbsp;All Transactions&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span>
+                </button>
+                <ul role="menu" class="dropdown-menu">
+                    <li>
+                        <div class="container-fluid box-filter custom-modal">
+                            <form role="form" id="filter_form">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label>Transaction type</label> 
+                                        <div class="btn-group col-sm-12" style="padding: 0;">
+                                            <button class="btn btn-default filter blue" data-type="all" type="button">All</button>
+                                            <button class="btn btn-default filter" data-type="income" type="button">Income</button>
+                                            <button class="btn btn-default filter" data-type="purchase" type="button">Expenses</button>
+                                        </div>
+                                        <input type="hidden" value="all" id="transaction_type">
+                                    </div>
+                                    <div style="clear: both;"></div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <label>Dates</label> 
+                                        <select class="form-control" id="date" style="width:100px">
+                                            <option value="all">All</option>
+                                            <option value="custom">Custom</option>
+                                            <option value="this_month">This month</option>
+                                            <option value="last_month">Last month</option>
+                                            <option value="this_quarter">This quarter</option>
+                                            <option value="last_quarter">Last quarter</option>
+                                            <option value="this_financial_year">This financial year</option>
+                                            <option value="last_financial_year">Last financial year</option>
+                                            <option value="this_year">This year</option>
+                                            <option value="last_year">Last year</option>
+                                        </select>
+                                    </div>         
+                                    <div class="col-sm-4">
+                                        <label>From</label> 
+                                        <input type="text" value="" class="form-control custom-date" id="from_date">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label>To</label> 
+                                        <input type="text" value="" class="form-control custom-date" id="to_date">
+                                    </div>
+                                    <div style="clear: both;"></div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label>Description contains...</label> 
+                                        <div style="padding: 0;">
+                                            <textarea placeholder="E.g Officework" id="description_contains"></textarea>
+                                        </div>
+                                    </div>
+                                    <div style="clear: both;"></div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary btn-custom-filter" type="button">Apply</button>
+                                    <button data-dismiss="modal" class="btn btn-default custom-filter-reset" type="button">Reset</button>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div> 
+</div>
+<?php endif; ?>
+<script type="text/javascript">
+    $('.custom-date').datepicker({format : 'yyyy-mm-dd', autoclose: true}).datepicker("setDate", new Date());
+</script>

@@ -1,0 +1,61 @@
+
+<div class="modal-header">
+    <span>Add income</span>
+</div>
+<div class="modal-body">
+    <form role="form" id="add_expense" class="form-horizontal" data-type="income" parsley-validate novalidate>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Amount</label>
+            <div class="col-sm-5">
+                <input type="text" value="<?php echo $expense->amount; ?>" id="amount" class="form-control">
+            </div>
+            <div class="col-sm-4" style="padding-top: 7px;">
+                <input tabindex="5" <?php echo $expense->inc_gst=='1'?'checked':''; ?> type="checkbox" id="inc_gst">
+                <label for="inc-gst">Inc. GST</label> 
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Gst</label>
+            <div class="col-sm-5">
+                <input type="text" disabled="disabled" value="<?php echo $expense->gst==''?'0.00':round($expense->gst,2); ?>" id="gst" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Date</label>
+            <div class="col-sm-5">
+            <input type="text" id="updated_at" value="<?php echo $expense->updated_at?date('Y-m-d',strtotime($expense->updated_at)):date('Y-m-d'); ?>" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Description</label>
+            <div class="col-sm-9">
+                <textarea id="description" style="width: 100%;"><?php echo $expense->description; ?></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-4 pul-left"></div>
+            <div class="col-sm-8 pul-right">
+                <button class="btn btn-primary btn-blue" type="button" data-type="income" id="add-income">Save</button>
+                <button data-dismiss="modal" class="btn btn-default btn-flat md-close-custom" type="button">Cancel</button>
+            </div>
+        </div>
+        <input type="hidden" id="id" value="<?php echo $expense->id==''?0:$expense->id; ?>">
+    </form>
+</div>
+<script type="text/javascript">
+    $('input[type="checkbox"]').iCheck({
+        checkboxClass: 'icheckbox_minimal-green',
+        radioClass: 'iradio_minimal-green',
+        increaseArea: '20%' // optional
+    });
+    $('input[type="checkbox"]').on('ifChecked', function(event){
+        var amount = parseFloat($('#amount').val());
+        if(isNaN(amount)) amount=0;
+        var gst = amount/11;
+        $('#gst').val(gst.toFixed(2)); 
+    });
+    $('input[type="checkbox"]').on('ifUnchecked', function(event){
+        $('#gst').val('0.00');
+    }) 
+    $('#updated_at').datepicker({format : 'yyyy-mm-dd', autoclose: true});
+</script>

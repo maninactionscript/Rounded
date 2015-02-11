@@ -1,0 +1,38 @@
+<table data-type="<?php echo $type; ?>">
+    <thead>
+        <tr>
+            <th style="width: 5%;">
+                <input value="all" type="checkbox" class="check-all">
+            </th>
+            <th style="width: 10%;">Date</th>
+            <th style="width: 10%;">Type</th>
+            <th style="width: 30%;">Description</th>
+            <th>Category</th>
+            <th>Attachment</th>
+            <th>Amount</th>
+            <th>Gst</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php if($expense->count()): ?>
+        <?php foreach($expense as $exp): ?>
+        <tr data-id="<?php echo $exp->id; ?>">
+            <td><input value="<?php echo $exp->id; ?>" type="checkbox" class="check"></td>
+            <td><?php echo date('j M, y', strtotime($exp->updated_at)); ?></td>
+            <td><?php echo $exp->type=='income'?ucfirst($exp->type):'Expense'; ?></td>
+            <td><?php echo $exp->description; ?></td>
+            <td>
+                <?php echo $exp->category?$exp->category->title:'N/A'; ?>
+            </td>
+            <td><a href="#"><?php echo basename($exp->attachment); ?></a></td>
+            <td>$<?php echo number_format($exp->amount,2); ?></td>
+            <td>$<?php echo number_format($exp->gst,2); ?></td>
+        </tr>
+        <?php endforeach; ?>
+        <?php else: ?>
+        <tr data-id="0">
+            <td colspan="8">No data found</td>
+        </tr>
+        <?php endif; ?>
+    </tbody>
+</table>

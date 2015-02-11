@@ -1,0 +1,53 @@
+<table class="no-border no-strip">
+    <thead>
+      <tr>
+        <th>Client Name</th>
+        <th>Overdue</th>
+        <th>Outstanding</th>
+        <th>% of total income</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody class="no-border-y">
+        <?php if(count($clients)): ?>
+        <?php foreach($clients as $cln): ?>
+        <?php /**/ $sign = json_decode(str_replace('\'','"',$cln->sign)) /**/ ?>
+        <tr data-id=<?php echo $cln->id; ?>>
+            <td style="width: 40%;">
+                <span class="sign-preivew" style="background-color: <?php echo $sign->col; ?>;border-color:<?php echo $sign->col; ?>"><?php echo $sign->char; ?></span>
+                <span>&nbsp;&nbsp;&nbsp;<?php echo $cln->business_name; ?></span>
+            </td>
+            <td style="width: 15%;">
+                <?php /**/ $n = explode('.',number_format($cln->overdue,2)) /**/ ?>
+                <span class="i-number">$ <?php echo $n[0]; ?></span><span class="d-number">.<?php echo $n[1]; ?></span>
+            </td>
+            <td style="width: 15%;">
+                <?php /**/ $n = explode('.',number_format($cln->outstanding,2)) /**/ ?>
+                <span class="i-number">$ <?php echo $n[0]; ?></span><span class="d-number">.<?php echo $n[1]; ?></span>
+            </td>
+            <td style="width: 25%;">
+                <span class="ou-text"><?php echo number_format($cln->income,2); ?>%</span>
+            </td>
+            <td style="width: 5%;">
+                <div class="picker-drop">
+                    <button data-toggle="dropdown" class="dropdown-toggle" type="button">
+                        <span class="caret"></span>
+                    </button>
+                    <span class="picker-hidden"></span>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><a class="right-slider" data-form="client" data-id="<?php echo $cln->id; ?>" href="#">Edit</a></li>
+                        <li><a data-page="invoice" data-client="<?php echo $cln->id; ?>" href="#">Create invoice</a></li>
+                        <li><a href="#">View all invoices</a></li>
+                        <li><a class="delete-client" href="#">Delete client</a></li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+        <?php else: ?>
+        <tr data-id="0">
+            <td colspan="5">No client found</td>
+        </tr>
+        <?php endif; ?>
+    </tbody>
+</table>

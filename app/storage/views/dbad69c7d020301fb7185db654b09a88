@@ -1,0 +1,20 @@
+<?php if($addNew): ?>
+<tr data-id="<?php echo $expense->id; ?>">
+    <?php endif; ?>
+    <td><?php echo date('j M, y', strtotime($expense->updated_at)); ?></td>
+    <td><?php echo $expense->description; ?></td>
+    <td>
+        <?php echo $expense->category?$expense->category->title:'N/A'; ?>
+    </td>
+    <td>$<?php echo number_format($expense->amount,2); ?></td>
+    <td>$<?php echo number_format($expense->gst,2); ?></td>
+    <td>
+        <?php echo $expense->inc_gst == '1'?'<i class="fa fa-check-square-o"></i>':'<i class="fa fa-ban"></i>'; ?>
+    </td>
+    <td>
+        <a class="action" data-modal="modal" data-action="edit" href="#">Edit</a>
+        <a class="action" data-action="delete" href="#">Delete</a>
+    </td>
+    <?php if($addNew): ?>
+</tr>
+<?php endif; ?>
