@@ -1,0 +1,19 @@
+<div class="navbar navbar-default" id="head-nav">
+    <div class="container-fluid">
+      <div class="navbar-collapse">
+          <span id="jpage-title">My Transactions</span>
+        <ul class="nav navbar-nav navbar-right user-nav">
+          <li class="dropdown profile_menu">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#"><img src="<?php echo URL::to('assets/images/noavatar.jpg'); ?>" alt="Avatar"><span>Jane Smith</span> <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">My Account</a></li>
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">Messages</a></li>
+              <li class="divider"></li>
+              <li><a href="<?php echo URL::to('user/logout'); ?>">Sign Out</a></li>
+            </ul>
+          </li>
+        </ul>			
+      </div><!--/.nav-collapse animate-collapse -->
+    </div>
+  </div>

@@ -1,0 +1,27 @@
+<div class="cl-sidebar">
+    <div class="cl-toggle"><i class="fa fa-bars"></i></div>
+    <div class="cl-navblock">
+      <div class="menu-space">
+        <div class="content">
+          <div class="sidebar-logo">
+            <div class="logo">
+                <a href="<?php echo URL::to('/'); ?>"></a>
+            </div>
+          </div>
+          <ul class="cl-vnavigation">
+              <li class="parent open"><a data-page="" href="#"><i class="fa fa-list"></i><br><span>Transactions</span></a>
+              <ul class="sub-menu" style="display: block;">
+                <li><a data-page="workbook" href="#">Workbook</a></li>
+                <li><a data-page="banking" href="#">Banking</a></li>
+              </ul>
+            </li>
+            <li class="parent"><a data-page="client" href="#"><i class="fa fa-user"></i><br><span>Clients</span></a></li>
+            <li class="parent"><a data-page="invoice" href="#"><i class="fa fa-file-text-o"></i><br><span>Invoices</span></a></li>
+            <li class="parent"><a data-page="project" href="#"><i class="fa fa-briefcase"></i><br><span>Projects</span></a></li>
+            <li class="parent"><a data-page="report" href="#"><i class="fa fa-bar-chart-o"></i><br><span>Reports</span></a></li>
+            <li class="parent"><a data-page="setting" href="#"><i class="fa fa-cogs fa-fw"></i><br><span>Settings</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+</div>

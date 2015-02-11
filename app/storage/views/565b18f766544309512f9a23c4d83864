@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-sm-12 expense-list">
+        <div class="row basr-actions">
+            <div class="col-sm-3" style="width: 15.5%;">                                
+                <a href="#" data-form="income" data-modal="modal" class="form-modal"><i class="fa fa-plus"></i><span>Add income</span></a>
+            </div>
+            <div class="col-sm-3">                                
+                <a href="#" data-form="import" data-modal="modal" class="form-modal"><i class="fa fa-download"></i><span>Import from bank</span></a>
+            </div>
+        </div>
+        <div class="row">
+            <table class="no-border table-list" id="income">
+                <thead class="no-border">
+                    <tr>
+                        <th style="width: 12%;">Date</th>
+                        <th style="width: 40%;">Description</th>
+                        <th>Amount</th>
+                        <th>Gst</th>
+                        <th>Inc. Gst</th>
+                        <th style="text-align: center; width: 12%;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="no-border-x no-border-y">
+                    <?php if($expense->count()): ?>
+                    <?php foreach($expense as $exp): ?>
+                    <tr data-id="<?php echo $exp->id; ?>">
+                        <td><?php echo date('j M, y', strtotime($exp->updated_at)); ?></td>
+                        <td><?php echo $exp->description; ?></td>
+                        <td>$<?php echo number_format($exp->amount,2); ?></td>
+                        <td>$<?php echo number_format($exp->gst,2); ?></td>
+                        <td>
+                            <?php echo $exp->inc_gst == '1'?'<i class="fa fa-check-square-o"></i>':'<i class="fa fa-ban"></i>'; ?>
+                        </td>
+                        <td>
+                            <a class="action" data-modal="modal" data-action="edit" href="#">Edit</a>
+                            <a class="action" data-action="delete" href="#">Delete</a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                    <?php else: ?>
+                    <tr data-id="0">
+                        <td colspan="5">No data found</td>
+                    </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+<div class="invoice-body">
+    <?php if($invoices !== null && count($invoices) > 0): ?>
+    <?php for($i=0;$i<count($invoices);$i++): ?>
+	<?php if($invoices[$i]->client != NULL): ?>
+
+    <?php /**/ $totalPaid = $invoices[$i]->getPaid(); /**/ ?>
+    <?php if($invoices[$i]->sent == 0 || $invoices[$i]->sent=='0'): ?>
+    <?php /**/ $img = 'invoice-draft.png' /**/ ?>
+    <?php /**/ $state = 'created' /**/ ?>
+    <?php else: ?>
+        <?php if($totalPaid >= $invoices[$i]->total): ?>
+           <?php /**/ $img = 'invoice-paid.png' /**/ ?>
+           <?php /**/ $state = 'paid' /**/ ?>
+        <?php elseif(strtotime($invoices[$i]->due_date.' 23:59:59') < strtotime("now")): ?>
+            <?php /**/ $img = 'invoice-overdue.png' /**/ ?>
+            <?php /**/ $state = 'overdue' /**/ ?>
+            <?php /**/ $days = ceil((strtotime("now") - strtotime($invoices[$i]->due_date.' 23:59:59'))/86400) /**/ ?>
+			<?php /**/ $label = $days > 1 ? $days.' days '.$state : $days.' day '.'overdue' /**/ ?>
+        <?php elseif(strtotime($invoices[$i]->due_date.' 23:59:59') > strtotime("now")): ?>
+            <?php /**/ $img = 'invoice-outstanding.png' /**/ ?>
+            <?php /**/ $state = 'outstanding' /**/ ?>
+            <?php /**/ $days = ceil((strtotime($invoices[$i]->due_date.' 23:59:59') - strtotime("now"))/86400) /**/ ?>
+            <?php /**/ $label = 'Invoice due in ' /**/ ?>
+            <?php /**/ $label .= $days > 1 ? $days.' days ' : $days.' day ' /**/ ?>
+        <?php endif; ?>
+    <?php endif; ?>
+    <?php /**/ $client = $invoices[$i]->client /**/ ?>
+    <?php /**/ $sign = json_decode(str_replace('\'','"',$client->sign)) /**/ ?>
+    <?php if($state=='paid'): ?>
+    <?php /**/ $n = explode('.',number_format($totalPaid,2)) /**/ ?>
+    <?php else: ?>
+    <?php /**/ $n = explode('.',number_format($invoices[$i]->total-$totalPaid,2)) /**/ ?>
+    <?php endif; ?>
+    <div class="columns invoice-block <?php echo $i+1 == count($invoices) ? 'end' : ''; ?>" data-id="<?php echo $invoices[$i]->id; ?>">
+        <div class="large-12 columns">
+            <span class="sign-preivew" style="background-color: <?php echo $sign->col; ?>;border-color:<?php echo $sign->col; ?>"><?php echo $sign->char; ?></span>
+            <span class="invoice-number"><?php echo $invoices[$i]->invoice_number; ?></span>
+            <p class="client-name">Client: <?php echo $client->business_name; ?></p>
+            <p><?php echo strlen($invoices[$i]->desc) > 50 ? substr($invoices[$i]->desc,50).'...' : $invoices[$i]->desc; ?>&nbsp;</p>
+            <div class="bank-action picker-drop">
+            <button data-toggle="dropdown" class="dropdown-toggle" type="button">
+                <span class="caret"></span>
+            </button>
+            <span class="picker-hidden">&nbsp;</span>
+            <ul role="menu" class="dropdown-menu">
+                <li><a href="#" class="detail-invoice">Details</a></li>
+                <?php if($state != 'paid'): ?>
+				<li><a href="#" class="edit-invoice">Edit</a></li>
+                <?php endif; ?>
+				<li><a href="#" data-id="<?php echo $invoices[$i]->id; ?>" class="delete-invoice">detete</a></li>
+            </ul>
+        </div>
+        </div>
+        <div class="large-12 columns">
+            <img src="<?php echo URL::to('assets/images/'.$img); ?>" alt="">
+            <?php if($state == 'overdue' || $state == 'outstanding'): ?>
+            <p style="text-transform: uppercase;"><?php echo $label; ?></p>
+            <?php elseif($state == 'paid'): ?>
+                <?php /**/ $lastPaid =$invoices[$i]->getLastPaid();  /**/ ?>
+                <?php /**/ $lastPaid =$lastPaid  ? $lastPaid : $invoices[$i]->updated_date;  /**/ ?>
+                <p style="text-transform: uppercase;">Paid on <?php echo date('j M, Y',strtotime($lastPaid)); ?></p>
+            <?php else: ?>
+                <p style="text-transform: uppercase;">Created on <?php echo date('j M, Y',strtotime($invoices[$i]->updated_date)); ?></p>
+            <?php endif; ?>
+        </div>
+        <div class="large-12 columns">
+            <p style="text-align: right;"><span class="i-number">$<?php echo $n[0]; ?></span><span class="d-number">.<?php echo $n[1]; ?></span></p>
+        </div>
+    </div>
+    <?php endif; ?>
+    <?php endfor; ?>
+    <?php else: ?>
+    <p>No invoice found.</p>
+    <?php endif; ?>
+</div>

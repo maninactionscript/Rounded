@@ -1,0 +1,29 @@
+[06-Jul-2014 23:40:27 Asia/Ho_Chi_Minh] PHP Parse error:  syntax error, unexpected '=' in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 54
+[06-Jul-2014 23:46:10 Asia/Ho_Chi_Minh] PHP Parse error:  syntax error, unexpected '}' in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 150
+[06-Jul-2014 23:52:01 Asia/Ho_Chi_Minh] PHP Parse error:  syntax error, unexpected '*' in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 63
+[06-Jul-2014 23:52:22 Asia/Ho_Chi_Minh] PHP Parse error:  syntax error, unexpected '*' in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 64
+[07-Jul-2014 00:37:51 Asia/Ho_Chi_Minh] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 77
+[07-Jul-2014 00:38:18 Asia/Ho_Chi_Minh] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 77
+[07-Jul-2014 00:44:29 Asia/Ho_Chi_Minh] PHP Parse error:  syntax error, unexpected 'array' (T_ARRAY) in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 75
+[07-Jul-2014 00:45:05 Asia/Ho_Chi_Minh] PHP Parse error:  syntax error, unexpected 'array' (T_ARRAY) in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 75
+[07-Jul-2014 00:48:53 Asia/Ho_Chi_Minh] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 77
+[07-Jul-2014 00:51:35 Asia/Ho_Chi_Minh] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 81
+[07-Jul-2014 00:51:59 Asia/Ho_Chi_Minh] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 81
+[07-Jul-2014 00:52:19 Asia/Ho_Chi_Minh] PHP Fatal error:  Call to undefined function choResponse() in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 81
+[07-Jul-2014 00:53:57 Asia/Ho_Chi_Minh] PHP Fatal error:  Call to undefined function choResponse() in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 81
+[07-Jul-2014 00:57:12 Asia/Ho_Chi_Minh] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 78
+[07-Jul-2014 01:27:01 Asia/Ho_Chi_Minh] PHP Fatal error:  Call to undefined function choResponse() in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 87
+[07-Jul-2014 01:30:49 Asia/Ho_Chi_Minh] PHP Fatal error:  Call to undefined function choResponse() in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 88
+[07-Jul-2014 01:31:22 Asia/Ho_Chi_Minh] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR) in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 88
+[07-Jul-2014 01:31:47 Asia/Ho_Chi_Minh] PHP Fatal error:  Call to undefined function echoResponse() in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 88
+[07-Jul-2014 01:56:28 Asia/Ho_Chi_Minh] PHP Parse error:  syntax error, unexpected ';', expecting ')' in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 119
+[07-Jul-2014 02:08:15 Asia/Ho_Chi_Minh] PHP Parse error:  syntax error, unexpected ']' in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 137
+[07-Jul-2014 02:19:00 Asia/Ho_Chi_Minh] PHP Parse error:  syntax error, unexpected '}', expecting ')' in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 163
+[07-Jul-2014 02:19:41 Asia/Ho_Chi_Minh] PHP Parse error:  syntax error, unexpected '}', expecting ')' in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 162
+[07-Jul-2014 02:20:06 Asia/Ho_Chi_Minh] PHP Parse error:  syntax error, unexpected '}', expecting ')' in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 162
+[07-Jul-2014 02:20:47 Asia/Ho_Chi_Minh] PHP Parse error:  syntax error, unexpected '}', expecting ')' in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 162
+[07-Jul-2014 02:22:04 Asia/Ho_Chi_Minh] PHP Parse error:  syntax error, unexpected '}', expecting ')' in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 162
+[07-Jul-2014 02:51:28 Asia/Ho_Chi_Minh] PHP Parse error:  syntax error, unexpected ')', expecting '(' in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 204
+[07-Jul-2014 12:53:53 Asia/Ho_Chi_Minh] PHP Fatal error:  Cannot use object of type stdClass as array in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 104
+[07-Jul-2014 13:07:58 Asia/Ho_Chi_Minh] PHP Fatal error:  Cannot use object of type stdClass as array in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 105
+[07-Jul-2014 13:46:33 Asia/Ho_Chi_Minh] PHP Fatal error:  Cannot use object of type stdClass as array in /home/frontlineweb14/public_html/basr/app/controllers/MobileAPI.php on line 106

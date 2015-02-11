@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="shortcut icon" type="image/x-icon" href="<?php echo URL::to(''); ?>/favicon.ico">
+        <title>
+            <?php $__env->startSection('title'); ?>
+            BASR
+            <?php echo $__env->yieldSection(); ?>
+        </title>
+        <?php $__env->startSection('css'); ?>
+        <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700,800' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Raleway:300,200,100' rel='stylesheet' type='text/css'>-->
+        <link rel="stylesheet" href="<?php echo asset('assets/bootstrap/css/bootstrap.min.css'); ?>">
+        <link rel="stylesheet" href="<?php echo asset('assets/foundation/css/foundation.css'); ?>" />
+        <link rel="stylesheet" href="<?php echo asset('assets/css/style.css'); ?>">
+        <link rel="stylesheet" href="<?php echo asset('assets/font-awesome/css/font-awesome.min.css'); ?>">
+        <link rel="stylesheet" href="<?php echo asset('assets/nanoscroller/nanoscroller.css'); ?>">
+        <link rel="stylesheet" href="<?php echo asset('assets/datepicker/css/datepicker3.css'); ?>">
+        <link rel="stylesheet" href="<?php echo asset('assets/jquery.niftymodals/css/component.css'); ?>"> 
+         
+
+        <link rel="stylesheet" href="<?php echo asset('assets/css/main.css'); ?>">
+        <script src="<?php echo asset('assets/foundation/js/vendor/modernizr.js'); ?>"></script>
+        <?php echo $__env->yieldSection(); ?>
+        <?php $__env->startSection('jscode'); ?>
+        <script type="text/javascript">
+            window.baseurl = function(){
+                var url = "<?php echo URL::to(''); ?>";
+                return url;
+            }
+            window._token = function(){
+                var token = "<?php echo csrf_token(); ?>";
+                return token;
+            }
+        </script>
+        <?php echo $__env->yieldSection(); ?> 
+        <!--<script type="text/javascript" src="//use.typekit.net/ncl2hfe.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>-->
+    </head>
+    <?php if(Request::is('user/*')): ?> 
+    <?php /**/ $class = 'texture' /**/ ?>
+    <?php else: ?>
+    <?php /**/ $class = 'animated cbp-spmenu-push' /**/ ?>
+    <?php endif; ?>
+    <body class="<?php echo $class; ?>">
+        <?php echo $__env->yieldContent('content'); ?>
+
+        <?php echo $__env->make('include/modal/default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        <!--<script type="text/javascript" src="<?php echo asset('assets/js/jquery.min.js'); ?>"></script>-->
+        <script src="<?php echo asset('assets/foundation/js/vendor/jquery.js'); ?>"></script>
+         <script src="<?php echo asset('assets/foundation/js/foundation.min.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo asset('assets/js/jquery.cookie.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo asset('assets/bootstrap/js/bootstrap.min.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo asset('assets/js/jquery-ui.js'); ?>"></script>  
+        <script type="text/javascript" src="<?php echo asset('assets/js/jPushMenu.js'); ?>" ></script>
+        <script type="text/javascript" src="<?php echo asset('assets/nanoscroller/jquery.nanoscroller.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo asset('assets/jquery.niftymodals/js/jquery.modalEffects.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo asset('assets/datepicker/js/bootstrap-datepicker.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo asset('assets/js/jquery.confirm.min.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo asset('assets/js/core.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo asset('assets/js/Chart.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo asset('assets/js/scrolltofixed.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo asset('assets/js/jquery.mousewheel.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo asset('assets/js/main.js'); ?>"></script>
+        <script>
+            $(document).foundation();
+        </script>
+        <?php echo $__env->yieldContent('scripts'); ?>
+    </body>
+</html>

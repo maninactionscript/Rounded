@@ -1,0 +1,26 @@
+<div class="modal-header">
+    <h4>Add Goal</h4>
+</div>
+<div class="modal-body">
+    <form id="add_goal">
+        <div class="row">
+            <div class="large-12 columns">
+                <label>i want to earn</label> 
+                <input type="text" name="goal">
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns">
+                <label>at the end of</label> 
+                <select name="period">
+                   <option value="quarter">This quarter</option>
+                   <option value="month">This month</option>
+                   <option value="financial_year">This financial year</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns"> <button id="add_goal_btn" class="button success expand btn-primary" type="button">Save</button> </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,41 @@
+
+
+<?php $__env->startSection('title'); ?> 
+@parent  - Activity
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?> 
+<div id="cl-wrapper" style="opacity: 1; margin-left: 0px;">
+    <?php echo $__env->make('layouts.sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <div id="activity" class="container-fluid">
+        <div class="row" style="padding: 10px 50px 50px;">
+            <div class="col-sm-3 col-md-3">
+                <select class="form-control" id="year">
+                    <?php foreach($years as $i => $year): ?>
+                    <option value="<?php echo $year; ?>"><?php echo $year; ?></option>
+                    <?php endforeach; ?>
+                </select>                                    
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <select class="form-control" id="quarter">
+                    <option value="">-- Select Quarter --</option>
+                    <?php foreach($quarter as $key => $val): ?>
+                    <option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+                    <?php endforeach; ?>
+                </select>                                    
+            </div>
+        </div>  
+        <div class="row">      
+            <div class="tab-container">
+                <ul class="nav nav-tabs">
+                    <li><a data-toggle="tab" data-page="income" href="#">Income</a></li>
+                    <li><a data-toggle="tab" data-page="purchase" href="#">Purchases</a></li>
+                    <li><a data-toggle="tab" data-page="generatebas" href="#">Generate BAS</a></li>
+                </ul>
+                <div class="tab-content" id="tab-content">
+                </div>
+            </div>
+        </div>                                       
+    </div>    
+</div> 
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

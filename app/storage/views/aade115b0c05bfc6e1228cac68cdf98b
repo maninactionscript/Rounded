@@ -1,0 +1,130 @@
+<?php echo $__env->make('layouts.right-sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make('layouts.headnav-small', array('title' => 'Email Templates', 'user' => $user, 'setting' => true), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<div class="container-fluid email_templates">
+    <div class="large-12 columns container-action" style="padding-top: 15px;">
+        <div class="large-8 columns no-padding">
+            <span>Email tags insert useful information into your email templates, like invoice numbers and client names etc,
+                so you don't have to do it manually every time. Tags will be inserted at your current cursor position</span>
+        </div>
+        <div class="large-4 columns no-padding text-center">
+            <button data-toggle="dropdown" class="button dropdown-toggle" data-type="" type="button" style="background-color: rgb(146, 157, 181);">insert</button>
+            <ul class="dropdown-menu" role="menu">
+                <li>
+                    <table class="no-border">
+                        <thead>
+                            <tr>
+                                <th colspan="2">INSERT</th>
+                            </tr> 
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="insert">your full name</td>
+                                <td class="insert">your business name</td>
+                            </tr>
+                            <tr>
+                                <td class="insert">invoice number</td>
+                                <td class="insert">invoice due date</td>
+                            </tr>
+                            <tr>
+                                <td class="insert">invoice due days</td>
+                                <td class="insert">payment amount</td>
+                            </tr>
+                            <tr>
+                                <td class="insert">client name</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <form setting-form="true" setting-type="emailTemplates">
+        <div class="large-12 columns form-block">
+            <div class="large-7 columns">
+                <h4>EMAIL FOR SENDING AN INVOICE</h4>
+                <div class="row">
+                    <p>Subject</p>
+                    <div form-field="true" name="invoice_subject" type="customize" class="jinput" data-input="input" contenteditable="true"><?php echo $setting != null ? $setting->invoice_subject : ''; ?></div>
+                </div>
+                <div class="row">
+                    <p>Message</p>
+                    <div form-field="true" name="invoice_content" type="customize" class="jinput" data-input="textarea" contenteditable="true"><?php echo $setting != null ? $setting->invoice_content : ''; ?></div>
+                </div>
+            </div>
+            <div class="large-4 end columns" style="margin-left: 3rem;">
+                <h4>&nbsp;</h4>
+                <div class="row">
+                    <p>Preview</p>
+                    <div class="large-12 tmpl-preview">
+                        <div class="tmpl-preview-header">
+                            <i class="fa fa-circle"></i>&nbsp;
+                            <i class="fa fa-circle"></i>&nbsp;
+                            <i class="fa fa-circle"></i> 
+                        </div>
+                        <div class="tmpl-preview-content">
+                            <div class="tmpl-subject">
+                                <p>Subject: Overdue Invoice from John Doe</p>
+                            </div>
+                            <div class="tmpl-content">
+                                <p>Hello Vladimir Babic,<br>
+                                    Please find attached invoice blu-001, which was<br> 
+                                    due on Oct 1st, 2014. This invoice is 6 days<br>
+                                    overdue. We would appriciate your prompt<br>
+                                    attention on this matter.<br>
+                                    Best Regards,<br>
+                                    John Doe</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="large-12 columns form-block">
+            <div class="large-7 columns">
+                <h4>EMAIL FOR SENDING A REMINDER</h4>
+                <div class="row">
+                    <p>Subject</p>
+                    <div form-field="true" name="reminder_subject" type="customize" class="jinput" data-input="input" contenteditable="true"><?php echo $setting != null ? $setting->reminder_subject : ''; ?></div>
+                </div>
+                <div class="row">
+                    <p>Message</p>
+                    <div form-field="true" name="reminder_content" type="customize" class="jinput" data-input="textarea" contenteditable="true"><?php echo $setting != null ? $setting->reminder_content : ''; ?></div>
+                </div>
+            </div>
+            <div class="large-4 end columns" style="margin-left: 3rem;">
+                <h4>&nbsp;</h4>
+                <div class="row">
+                    <p>Preview</p>
+                    <div class="large-12 tmpl-preview">
+                        <div class="tmpl-preview-header">
+                            <i class="fa fa-circle"></i>&nbsp;
+                            <i class="fa fa-circle"></i>&nbsp;
+                            <i class="fa fa-circle"></i> 
+                        </div>
+                        <div class="tmpl-preview-content">
+                            <div class="tmpl-subject">
+                                <p>Subject: Overdue Invoice from John Doe</p>
+                            </div>
+                            <div class="tmpl-content">
+                                <p>Hello Vladimir Babic,<br>
+                                    Please find attached invoice blu-001, which was<br> 
+                                    due on Oct 1st, 2014. This invoice is 6 days<br>
+                                    overdue. We would appriciate your prompt<br>
+                                    attention on this matter.<br>
+                                    Best Regards,<br>
+                                    John Doe</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer columns">
+            <div class="medium-2 columns"><button type="button" class="save_setting button success btn-primary">Save details</button></div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    document.title = 'Rounded - Email Templates';
+</script>
