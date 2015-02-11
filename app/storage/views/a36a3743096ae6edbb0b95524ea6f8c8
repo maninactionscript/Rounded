@@ -1,5 +1,0 @@
-<div class="row rounded-logo" >
-    <a href="<?php echo URL::to('/');; ?>">
-        <img src="<?php echo asset('assets/images/rlogo.png'); ?>" alt="logo">
-    </a>
-</div>
