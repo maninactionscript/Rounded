@@ -1116,11 +1116,27 @@ class AjaxController extends BaseController
             }
 
         } else {
-            $categoryArr = Category::where('id','=',$category)->get() ;
+			
+			if($category == ''){
+				$uncategorized = new stdClass();
+				$uncategorized->id = 0;
+				$uncategorized->title = 'Uncategorized';
+				$categoryArr[0] = $uncategorized;
+			} else {
+				$categoryArr = Category::where('id','=',$category)->get() ;
+			}
             if (!empty($categoryArr)) {
                 foreach ($categoryArr as $key => $categoryItem) {
-                    $expenseData[$categoryItem->id]['expense'] = DB::table('expenses')
-                        ->where('category_id', '=', $categoryItem->id)        ;
+					if($key=== 0){
+						$expenseData[$categoryItem->id]['expense'] = DB::table('expenses')
+                        ->where('category_id', '=', '')
+						->orWhere('category_id', '=', null);
+						
+					} else {
+						$expenseData[$categoryItem->id]['expense'] = DB::table('expenses')
+                        ->where('category_id', '=', $categoryItem->id);
+						
+					}
                     $expenseInside =  $expenseData[$categoryItem->id]['expense'];
                     // start switch case
                     if (isset($input['date']) && $input['date'] != '' && $input['date'] != 'all') {

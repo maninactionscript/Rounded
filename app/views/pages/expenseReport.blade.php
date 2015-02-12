@@ -32,6 +32,7 @@
             <label>Category</label>
             <select id="category">
                 <option value="all">All Categories</option>
+				<option value="">Uncategorized</option>
                 @foreach($category as $fy)
                     <option value="{{ $fy['id'] }}">{{ $fy['title'] }}</option>
                 @endforeach
